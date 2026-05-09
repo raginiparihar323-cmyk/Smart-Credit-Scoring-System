@@ -24,7 +24,7 @@ def load_lottie_url(url):
         return None
 
 finance_animation = load_lottie_url(
-    "https://assets2.lottiefiles.com/packages/lf20_qp1q7mct.json"
+    "https://assets10.lottiefiles.com/packages/lf20_tno6cg2w.json"
 )
 
 st.markdown("""
