@@ -361,23 +361,23 @@ if st.button("🚀 Analyze Credit Risk", use_container_width=True):
 
         result_col, gauge_col = st.columns([1, 1])
 
-        with result_col:
-            st.markdown('<div class="glass-card">', unsafe_allow_html=True)
-            st.subheader("🎯 Final Credit Decision")
+    with result_col:
+        st.markdown('<div class="glass-card">', unsafe_allow_html=True)
+        st.subheader("🎯 Final Credit Decision")
 
-if prediction == 0:
-    st.markdown(
-        '<div class="result-good">✅ GOOD CREDIT RISK</div>',
-        unsafe_allow_html=True
-    )
+        if prediction == 0:
+            st.markdown(
+                '<div class="result-good">✅ GOOD CREDIT RISK</div>',
+                unsafe_allow_html=True
+            )
 
-    st.balloons()
+            st.balloons()
 
-else:
-                st.markdown(
-                    '<div class="result-bad">⚠️ BAD / RISKY CREDIT RISK</div>',
-                    unsafe_allow_html=True
-                )
+        else:
+            st.markdown(
+                '<div class="result-bad">⚠️ BAD / RISKY CREDIT RISK</div>',
+                unsafe_allow_html=True
+            )
 
             st.write("")
             st.write(f"### Default Risk Probability: **{risk_percent:.2f}%**")
