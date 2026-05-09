@@ -193,14 +193,14 @@ with hero_left:
 with hero_right:
    if finance_animation:
     st_lottie(finance_animation, height=260)
-else:
-  st.markdown("""
-<div class="glass-card" style="text-align:center; padding:45px;">
-    <h1 style="font-size:70px;">💳</h1>
-    <h2>Smart Risk Engine</h2>
-    <p class="small-note">AI-powered credit default prediction</p>
-</div>
-""", unsafe_allow_html=True)
+   else:
+       st.markdown("""
+       <div class="glass-card" style="text-align:center; padding:45px;">
+           <h1 style="font-size:70px;">💳</h1>
+           <h2>Smart Risk Engine</h2>
+           <p class="small-note">AI-powered credit default prediction</p>
+      </div>
+      """, unsafe_allow_html=True)
 
 tab1, tab2, tab3 = st.tabs([
     "👤 Customer Profile",
