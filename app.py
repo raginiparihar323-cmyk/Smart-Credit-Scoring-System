@@ -5,8 +5,8 @@ import plotly.graph_objects as go
 import requests
 from streamlit_lottie import st_lottie
 
-model = pickle.load(open(r"C:\Users\hp\credit_model.pkl", "rb"))
-scaler = pickle.load(open(r"C:\Users\hp\scaler.pkl", "rb"))
+model = pickle.load(open("credit_model.pkl", "rb"))
+scaler = pickle.load(open("scaler.pkl", "rb"))
 
 st.set_page_config(
     page_title="Credit Risk AI",
