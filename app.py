@@ -11,7 +11,8 @@ scaler = pickle.load(open("scaler.pkl", "rb"))
 st.set_page_config(
     page_title="Credit Risk AI",
     page_icon="💳",
-    layout="wide"
+    layout="wide",
+    initial_sidebar_state="collapsed"
 )
 
 def load_lottie_url(url):
@@ -29,6 +30,11 @@ finance_animation = load_lottie_url(
 
 st.markdown("""
 <style>
+
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+header {visibility: hidden;}
+
 .stApp {
     background: radial-gradient(circle at top left, #1e3a8a, #020617 45%, #020617);
     color: white;
@@ -185,15 +191,16 @@ with hero_left:
     """, unsafe_allow_html=True)
 
 with hero_right:
-    if finance_animation:
-        st_lottie(finance_animation, height=260)
-    else:
-        st.markdown("""
-        <div class="glass-card" style="text-align:center;">
-            <h1>💳</h1>
-            <h3>Smart Credit Risk Engine</h3>
-        </div>
-        """, unsafe_allow_html=True)
+   if finance_animation:
+    st_lottie(finance_animation, height=260)
+else:
+  st.markdown("""
+<div class="glass-card" style="text-align:center; padding:45px;">
+    <h1 style="font-size:70px;">💳</h1>
+    <h2>Smart Risk Engine</h2>
+    <p class="small-note">AI-powered credit default prediction</p>
+</div>
+""", unsafe_allow_html=True)
 
 tab1, tab2, tab3 = st.tabs([
     "👤 Customer Profile",
@@ -342,7 +349,10 @@ with tab3:
 
     st.markdown('</div>', unsafe_allow_html=True)
 
-    if st.button("🚀 Analyze Credit Risk", use_container_width=True):
+if st.button("🚀 Analyze Credit Risk", use_container_width=True):
+
+    with st.spinner("Analyzing customer financial behaviour..."):
+
         features_scaled = scaler.transform(features)
 
         prediction = model.predict(features_scaled)[0]
@@ -355,12 +365,15 @@ with tab3:
             st.markdown('<div class="glass-card">', unsafe_allow_html=True)
             st.subheader("🎯 Final Credit Decision")
 
-            if prediction == 0:
-                st.markdown(
-                    '<div class="result-good">✅ GOOD CREDIT RISK</div>',
-                    unsafe_allow_html=True
-                )
-            else:
+if prediction == 0:
+    st.markdown(
+        '<div class="result-good">✅ GOOD CREDIT RISK</div>',
+        unsafe_allow_html=True
+    )
+
+    st.balloons()
+
+else:
                 st.markdown(
                     '<div class="result-bad">⚠️ BAD / RISKY CREDIT RISK</div>',
                     unsafe_allow_html=True
